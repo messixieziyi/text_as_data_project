@@ -1,0 +1,16 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c93333;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Research Topic: NLP in Finance\
+Research Question: What is the relationship between a stock's news about and its price movement and can we predict stock movement with news? This is interesting because a lot of trading decisions from people who don't use quantitative methods rely on the news they read. So we might be able to extract what NLP information are most important in people making trading decisions for certain stocks.\
+Independent Variable: Word frequency in news about stocks\
+Outcome variable: Stock price movement (time series / daily gains)\
+Text data: {\field{\*\fldinst{HYPERLINK "https://www.kaggle.com/datasets/gennadiyr/us-equities-news-data"}}{\fldrslt \cf3 \ul \ulc3 \strokec3 https://www.kaggle.com/datasets/gennadiyr/us-equities-news-data}}\'a0It just need some regular preprocessing to narrow down the amount of features.\
+Method/research design: To discuss correlation, I will look at Kendall correlation coefficient. I will examine which word correlates the most with stock's price and which correlates the least. Then for prediction, I will try to predict from news if a stock will go up or go down on that day. So it will be a binary classification problem. I will try to use models such as SVM, random forest, and all kinds of tree models and compare there accuracy (as well as the baseline accuracy using majority class)\
+}

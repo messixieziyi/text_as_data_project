@@ -33,15 +33,26 @@ corpus_tokens <- sotu_corpus %>%
   tokens_remove(pattern = stopwords('english'))
 
 dfm_object <- dfm(corpus_tokens) 
+topfeatures(dfm_object)
 
+# plot top features
+features_dfm_inaug <- textstat_frequency(dfm_object, n = 25)
+
+features_dfm_inaug$feature <- with(features_dfm_inaug, reorder(feature, -frequency))
+
+ggplot(features_dfm_inaug, aes(x = feature, y = frequency)) +
+  geom_point() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 # textplot_wordcloud(dfm_object)
 
 #ts
-terms_to_observe <- c("nation", "war",'us')
+terms_to_observe <- c("police", "new",'man','says','us','china')
 # terms_to_observe <- c('war')
 DTM_reduced <- as.matrix(dfm_object[, terms_to_observe])
 
 counts_per_day <- aggregate(DTM_reduced, by = list(year = year(data$publish_date), month = month(data$publish_date)), sum)
+
+# counts_per_day <- aggregate(DTM_reduced, by = list(date = data$publish_date), sum)
 
 counts_per_day$ym <- ym(paste(counts_per_day$year,'',counts_per_day$month))
 counts_per_day<-arrange(counts_per_day,counts_per_day$ym)
@@ -57,4 +68,5 @@ matplot(decades, frequencies, type = "l")
 # add legend to the plot
 l <- length(terms_to_observe)
 legend('topleft', legend = terms_to_observe, col=1:l, text.col = 1:l, lty = 1:l)  
+
 
